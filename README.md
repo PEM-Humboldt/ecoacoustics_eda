@@ -1,11 +1,5 @@
----
-title: "Flujo de análisis de paisajes sonoros - Parte 1"
-output: html_document
----
+# Flujo de análisis de paisajes sonoros - Parte 1
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 La gran cantidad de datos colectados durante un monitoreo acústico requiere de un flujo de trabajo estandarizado para guardar la información de forma estructurada, facilitar el intercambio de trabajo entre investigadores y agilizar el análisis de los datos. Se propone un flujo de trabajo semi-automático con el fin de aprovechar la velocidad de cómputo de los computadores y la capacidad de abstracción humana. En este documento se detallan las primeras fases del flujo de trabajo: (1) estructuración de metadatos a partir de los archivos de audio, (2) sub-muestreo de los datos para análisis exploratorio, (3) visualización de los datos, y (4) cuantificación de diferencias entre paisajes sonoros.
 
