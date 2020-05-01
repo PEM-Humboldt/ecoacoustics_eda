@@ -37,8 +37,8 @@ Para la visualización de los datos de los monitoreos acústicos se tuvo en cuen
 
 Nombre del script: audio_to_spectro_image.py
 
-
-## 4. Análisis cuantitativo de paisajes sonoros
+## 4. Caracterización del paisaje sonoroLa visualización de datos nos permite explorar rápidamente los regitros sonoros y hasta comparar cualitativamente los sitios de colecta. Sin embargo, estas representaciones son de muy altas dimensiones y es necesario pensar en una reducción de la información. Para este fin implementamos un protocolo para caracterizar cuantitativamente las características acústicas de cada sitio:Nombre del script: compute_psd_metrics_spectrogram.py
+## 5. Análisis cuantitativo de paisajes sonoros
 
 Los patrones identificados gracias a las herramientas de visualización deben ser medidos para poder comparar la información entre los puntos de muestreo y realizar un análisis cuantitativo. Con este fin, se diseñó un índice sencillo y de fácil interpretación. El índice calcula el porcentaje de actividad acústica relacionando a partir de un umbral seleccionado por el usuario, la cantidad de píxeles en un espectrograma que están por encima del umbral, dividido por los píxeles que están por debajo. Con este sencillo índice es posible comparar la actividad acústica entre diferentes sitios.
 
