@@ -1,49 +1,49 @@
-# Visualización y análisis exploratorio de paisajes sonoros
+# Visualization and exploratory data analysis of soundscapes
 
-La gran cantidad de datos colectados durante un monitoreo acústico requiere de un flujo de trabajo estandarizado para guardar la información de forma estructurada, facilitar el intercambio de trabajo entre investigadores y agilizar el análisis de los datos. Se propone un flujo de trabajo semi-automático con el fin de aprovechar la velocidad de cómputo de los computadores y la capacidad de abstracción humana. En este documento se detallan las primeras fases del flujo de trabajo: (1) estructuración de metadatos a partir de los archivos de audio, (2) sub-muestreo de los datos para análisis exploratorio, (3) visualización de los datos, y (4) cuantificación de diferencias entre paisajes sonoros.
+The large amount of data collected during an acoustic monitoring requires a standardized workflow to store the information in a structured way, facilitate the exchange of work between researchers and speed up the data analysis. A semi-automatic workflow is proposed in order to take advantage of computer computation speed and human abstraction capacity. The first phases of the workflow are detailed in this document: (1) structuring of metadata from the audio files, (2) sub-sampling of the data for exploratory analysis, (3) visualization of the data, and (4) quantification of differences between soundscapes.
 
 
-## 1. Estructuración de metadatos
+## 1. Acoustic sampling overview
 
-Al realizar una grabación de audio, los sensores acústicos incluyen en cada archivo información que es fundamental para los análisis posteriores. Con el fin de automatizar la recuperación de estos datos se programó en lenguaje R un script que recorre todos los archivos en un directorio, extrae los metadatos y los estructura en un archivo separado por comas, o csv. **Los archivos deben estar anidados en un directorio con el nombre de la localidad y un subdirectorio con el nombre del punto de muestreo**. El script [audio_metadata_utilities.R](audio_metadata_utilities.R) tiene todas las funciones y el script [read_audio_metadata.R](read_audio_metadata.R) es un ejemplo que muestra como usar estas funciones para recuperar los metadatos y realizar una gráfica.
+When collecting data in an acoustic sampling, sensors include in each file information that is critical for further analysis. In order to automate the retrieval of this data, a script was programmed in R language that goes through all the files in a directory, extracts the metadata and structures them into a comma-separated file, or csv. The files must be nested in a directory with the name of the location and a subdirectory with the name of the sampling point. **All files must be nested in a directory with the name of the location and a subdirectory with the name of the site.**. The script [audio_metadata_utilities.R](audio_metadata_utilities.R) has all the functionswhile the script [read_audio_metadata.R](read_audio_metadata.R) is an example that show how to use the functions to get the metadata and plot a figure.
 
--	Nombre del archivo: fname_audio
--	Frecuencia de muestreo: sample.rate
--	Número de canales en la grabación: channels
--	Número de bits por muestra: 
--	Número de muestras: samples
--	Tamaño del archivo: fsize
--	Tipo de grabadora: recorder_model
--	Nombre del sensor: sensor_name
--	Fecha en formato  "%Y-%m-%d %H:%M:%S": date
--	Hora: time
--	Duración de la grabación: length
--	Nombre del sub-directorio dónde se encuentran (site)
+-	File name: fname_audio
+-	Sample rate: sample.rate
+-	Number of channels: channels
+-	Number of bits: bits 
+-	Number of samples: samples
+-	File size: fsize
+-	Recorder type: recorder_model
+-	Sensor name: sensor_name
+-	Formated date as "%Y-%m-%d %H:%M:%S": date
+-	time: time
+-	Audio file length: length
+-	Name of subdirectory: site
 
-Nombre de los scripts: [audio_metadata_utilities.R](audio_metadata_utilities.R), [read_audio_metadata.R](read_audio_metadata.R)
+Script names: [audio_metadata_utilities.R](audio_metadata_utilities.R), [read_audio_metadata.R](read_audio_metadata.R)
 
-## 2. Sub-muestreo de los datos
+## 2. Data sub-sampling
 
-En cada monitoreo acústico se recuperan grandes cantidades de datos, del orden de los Terabytes. Por las capacidades limitadas de cómputo y la velocidad de acceso de los datos, realizar pruebas y análisis sobre todo el conjunto de datos no resulta eficiente. Un sub-muestreo de estos datos permite tener una visión global de los datos de forma ágil. El script recorre un conjunto de archivos de audio, tomando cinco segundos (5 s) de cada archivo y si es necesario realiza un re-muestreo del audio para obtener archivos homogéneos. La salida es un archivo en formato pkl que puede ser leída por Python fácilmente.
+In each acoustic monitoring, large amounts of data are recovered, in the order of Terabytes. Due to limited computing capacities and data access speed, testing and analysis of the entire data set is not efficient. A sub-sampling of this data allows to have a global vision of the data in a fast way. The script goes through a set of audio files, taking five seconds (5 s) of each file and if necessary, resamples the audio to obtain homogeneous files. The output is a pkl format file that can be easily read in Python.
 
-Nombre del script: sample_acoustic_monitoring.py
+Name of the script: sample_acoustic_monitoring.py
 
-## 3. Visualización de datos
+## 3.Data visualization
 
-A partir del sub-muestreo de los datos resulta sumamente fácil y rápido realizar múltiples análisis, como calcular características acústicas y visualizar datos. Al trabajar con volúmenes de Terabytes, la visualización de datos resulta efectiva tanto para presentar información de grandes cantidades de datos, como para direccionar los análisis más complejos. La mente humana está altamente entrenada para reconocer patrones visuales, y al presentarle información en formato crudo, pero de manera organizada, es capaz de identificar fácilmente las principales tendencias de los datos. 
+From the sub-sampling of the data it is extremely easy and fast to perform multiple analyses, such as calculating acoustic characteristics and visualizing data. Working with Terabyte volumes, data visualization is effective both for presenting information on large amounts of data and for directing more complex analyses. The human mind is highly trained to recognize visual patterns, and by presenting information in a raw but organized format, it is able to easily identify major trends in the data. 
 
-Para la visualización de los datos de los monitoreos acústicos se tuvo en cuenta una representación en 2D del sonido y los pulsos naturales de 24 horas del paisaje sonoro. Así, se propone calcular el espectrograma de cada archivo de audio y organizar estos espectrogramas en ciclos de 24 horas.
+A 2D representation of the sound and the 24-hour natural pulses of the soundscape was taken into account for the visualization of the acoustic monitoring data. Thus, it is proposed to calculate the spectrogram of each audio file and to organize these spectrograms in 24-hour cycles.
 
-Nombre del script: audio_to_spectro_image.py
+Script name: audio_to_spectro_image.py
 
-## 4. Caracterización del paisaje sonoro
+## 4. Characterization of soundscapes
 
-La visualización de datos nos permite explorar rápidamente los regitros sonoros y hasta comparar cualitativamente los sitios de colecta. Sin embargo, estas representaciones son de muy altas dimensiones y es necesario pensar en una reducción de la información. Para este fin implementamos un protocolo para caracterizar cuantitativamente las características acústicas de cada sitio:
+Data visualization allows us to quickly explore the sound recordings and even to qualitatively compare the collection sites. However, these representations are of very high dimensions and it is necessary to think about a reduction of the information. For this purpose we implemented a protocol to quantitatively characterize the acoustic characteristics of each site:
 
-Nombre del script: compute_psd_metrics_spectrogram.py
+Script name: compute_psd_metrics_spectrogram.py
 
-## 5. Análisis cuantitativo de paisajes sonoros
+## 5. Quantitative analysis of soundscapes
 
-Los patrones identificados gracias a las herramientas de visualización deben ser medidos para poder comparar la información entre los puntos de muestreo y realizar un análisis cuantitativo. Con este fin, se diseñó un índice sencillo y de fácil interpretación. El índice calcula el porcentaje de actividad acústica relacionando a partir de un umbral seleccionado por el usuario, la cantidad de píxeles en un espectrograma que están por encima del umbral, dividido por los píxeles que están por debajo. Con este sencillo índice es posible comparar la actividad acústica entre diferentes sitios.
+The patterns identified by the visualization tools must be measured in order to compare the information between the sampling points and to perform a quantitative analysis. To this end, a simple and easily interpreted index was designed. The index calculates the percentage of acoustic activity by relating, from a threshold selected by the user, the number of pixels in a spectrogram that are above the threshold, divided by the pixels that are below. With this simple index it is possible to compare acoustic activity between different sites.
 
-Nombre del script: compute_soundscape_metrics.py
+Script name: compute_soundscape_metrics.py
