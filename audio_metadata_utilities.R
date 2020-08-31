@@ -1,5 +1,6 @@
 library(tuneR)
 library(seewave)
+library(ggplot2)
 
 # Get metadata information from a list of files
 # Parameters
@@ -56,9 +57,9 @@ metadata_audio <- function(flist, path_files='.', verbose=T, rec_model='SM'){
 
 # Plot sampling
 plot_sampling <- function(xdata, y_axis_factor, color_factor, shape_factor, plot_title){
-
+  xdata$date = as.POSIXct(strptime(xdata$date, format = "%Y-%m-%d %H:%M:%S"))
   base_plot <- ggplot(data = xdata) +
-    geom_point(aes(x = date_posx, y=y_axis_factor, color=color_factor, shape=shape_factor), 
+    geom_point(aes(x = date, y=y_axis_factor, color=color_factor, shape=shape_factor), 
                alpha = 0.4,
                size = 3) +
     labs(x = "Date", 
