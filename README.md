@@ -1,4 +1,4 @@
-# Visualization and exploratory data analysis of soundscapes
+# Exploratory data analysis of soundscapes
 
 The large amount of data collected during an acoustic monitoring requires a standardized workflow to store the information in a structured way, facilitate the exchange of work between researchers and speed up the data analysis. A semi-automatic workflow is proposed in order to take advantage of computer computation speed and human abstraction capacity. The first phases of the workflow are detailed in this document: (1) structuring of metadata from the audio files, (2) sub-sampling of the data for exploratory analysis, (3) visualization of the data, and (4) quantification of differences between soundscapes.
 
