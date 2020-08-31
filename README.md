@@ -2,7 +2,6 @@
 
 The large amount of data collected during an acoustic monitoring requires a standardized workflow to store the information in a structured way, facilitate the exchange of work between researchers and speed up the data analysis. A semi-automatic workflow is proposed in order to take advantage of computer computation speed and human abstraction capacity. The first phases of the workflow are detailed in this document: (1) structuring of metadata from the audio files, (2) sub-sampling of the data for exploratory analysis, (3) visualization of the data, and (4) quantification of differences between soundscapes.
 
-
 ## 1. Acoustic sampling overview
 
 When collecting data in an acoustic sampling, sensors include in each file information that is critical for further analysis. In order to automate the retrieval of this data, a script was programmed in R language that goes through all the files in a directory, extracts the metadata and structures them into a comma-separated file, or csv. The files must be nested in a directory with the name of the location and a subdirectory with the name of the sampling point. **All files must be nested in a directory with the name of the location and a subdirectory with the name of the site.**. The script [audio_metadata_utilities.R](audio_metadata_utilities.R) has all the functionswhile the script [read_audio_metadata.R](read_audio_metadata.R) is an example that show how to use the functions to get the metadata and plot a figure.
@@ -21,6 +20,10 @@ When collecting data in an acoustic sampling, sensors include in each file infor
 -	Name of subdirectory: site
 
 Script names: [audio_metadata_utilities.R](audio_metadata_utilities.R), [read_audio_metadata.R](read_audio_metadata.R)
+
+Dependencies:
+- R >= 3.6
+- R libraries: Seewave, tuneR and ggplot
 
 ## 2. Data sub-sampling
 
