@@ -24,7 +24,7 @@ Script names: [audio_metadata_utilities.R](audio_metadata_utilities.R), [read_au
 Dependencies:
 - R >= 3.6
 - R libraries: Seewave, tuneR and ggplot
-
+  
 ## 2. Data sub-sampling
 
 In each acoustic monitoring, large amounts of data are recovered, in the order of Terabytes. Due to limited computing capacities and data access speed, testing and analysis of the entire data set is not efficient. A sub-sampling of this data allows to have a global vision of the data in a fast way. The script goes through a set of audio files, taking five seconds (5 s) of each file and if necessary, resamples the audio to obtain homogeneous files. The output is a pkl format file that can be easily read in Python.
