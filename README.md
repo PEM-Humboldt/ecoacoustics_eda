@@ -17,7 +17,7 @@ pip install numpy pandas scipy scikit-image scikit-maad
 
 ## 1. Acoustic sampling overview
 
-When collecting data in an acoustic sampling, sensors include in each file information that is critical for further analysis. In order to automate the retrieval of this data, a script was programmed in R language that goes through all the files in a directory, extracts the metadata and structures them into a comma-separated file, or csv. The files must be nested in a directory with the name of the location and a subdirectory with the name of the sampling point. **All files must be nested in a directory with the name of the location and a subdirectory with the name of the site.**. The script [audio_metadata_utilities.R](audio_metadata_utilities.R) has all the functionswhile the script [read_audio_metadata.R](read_audio_metadata.R) is an example that show how to use the functions to get the metadata and plot a figure.
+When collecting data in an acoustic sampling, sensors include in each file information that is critical for further analysis. In order to automate the retrieval of this data, a script was programmed in R language that goes through all the files in a directory, extracts the metadata and structures them into a comma-separated file, or csv. The files must be nested in a directory with the name of the location and a subdirectory with the name of the sampling point. **All files must be nested in a directory with the name of the location and a subdirectory with the name of the site.**. The script [audio_metadata_utilities.R](audio_metadata_utilities.R) has all the functions while the script [read_audio_metadata.R](read_audio_metadata.R) is an example that show how to use the functions to get the metadata and plot a figure.
 
 -	File name: fname_audio
 -	Sample rate: sample.rate
@@ -65,4 +65,7 @@ The patterns identified by the visualization tools must be measured in order to 
 Script name: compute_soundscape_metrics.py
 
 ## License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Authors and contact
+[Juan Sebastián Ulloa](https://github.com/juansulloa)
