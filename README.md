@@ -4,9 +4,9 @@ The large amount of data collected during an acoustic monitoring requires a stan
 
 ## Prerequisites
 
-- R version 3.6 or higher. Packages: seewave, tuneR. To install those packages, run in your R console:
+- R version 3.6 or higher. Packages: seewave, tuneR, ggplot. To install those packages, run in your R console:
 ``` 
-install.packages('tuneR', 'seewave')
+install.packages('tuneR', 'seewave', 'ggplot')
 ```
 
 - Python version 3.6 or higher. Packages: numpy, pandas, scipy, scikit-image, scikit-maad. To install, run in your terminal console:
