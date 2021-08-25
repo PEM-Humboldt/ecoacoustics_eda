@@ -2,6 +2,19 @@
 
 The large amount of data collected during an acoustic monitoring requires a standardized workflow to store the information in a structured way, facilitate the exchange of work between researchers and speed up the data analysis. A semi-automatic workflow is proposed in order to take advantage of computer computation speed and human abstraction capacity. The first phases of the workflow are detailed in this document: (1) structuring of metadata from the audio files, (2) sub-sampling of the data for exploratory analysis, (3) visualization of the data, and (4) quantification of differences between soundscapes.
 
+## Getting started
+
+Software requirements:
+- R version 3.6 or higher. Packages: seewave, tuneR. To install those packages, run in your R console:
+``` 
+install.packages('tuneR', 'seewave')
+```
+
+- Python version 3.6 or higher. Packages: numpy, pandas, scipy, scikit-image, scikit-maad. To install, run in your terminal console:
+``` 
+pip install numpy pandas scipy scikit-image scikit-maad
+```
+
 ## 1. Acoustic sampling overview
 
 When collecting data in an acoustic sampling, sensors include in each file information that is critical for further analysis. In order to automate the retrieval of this data, a script was programmed in R language that goes through all the files in a directory, extracts the metadata and structures them into a comma-separated file, or csv. The files must be nested in a directory with the name of the location and a subdirectory with the name of the sampling point. **All files must be nested in a directory with the name of the location and a subdirectory with the name of the site.**. The script [audio_metadata_utilities.R](audio_metadata_utilities.R) has all the functionswhile the script [read_audio_metadata.R](read_audio_metadata.R) is an example that show how to use the functions to get the metadata and plot a figure.
@@ -50,3 +63,6 @@ Script name: compute_psd_metrics_spectrogram.py
 The patterns identified by the visualization tools must be measured in order to compare the information between the sampling points and to perform a quantitative analysis. To this end, a simple and easily interpreted index was designed. The index calculates the percentage of acoustic activity by relating, from a threshold selected by the user, the number of pixels in a spectrogram that are above the threshold, divided by the pixels that are below. With this simple index it is possible to compare acoustic activity between different sites.
 
 Script name: compute_soundscape_metrics.py
+
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details
